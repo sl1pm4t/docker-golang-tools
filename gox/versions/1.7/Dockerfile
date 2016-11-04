@@ -6,7 +6,6 @@ FROM golang:1.7.0-alpine
 
 RUN apk --no-cache add --virtual build-dependencies git \
       && go get -u github.com/mitchellh/gox \
-      && apk del --purge build-dependencies \
       && rm -rf /go/pkg /go/src
 
 ENTRYPOINT ["/go/bin/gox"]
