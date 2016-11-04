@@ -6,5 +6,6 @@ FROM golang:1.7-alpine
 
 RUN apk --no-cache add --virtual build-dependencies git \
       && go get -u -v github.com/mitchellh/gox \
-      && go get -u -v github.com/ahmetalpbalkan/govvv
+      && go get -u -v github.com/ahmetalpbalkan/govvv \
+      && cp /go/bin/* /usr/local/bin/
 
