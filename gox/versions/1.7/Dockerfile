@@ -5,9 +5,10 @@
 FROM golang:1.7.0-alpine
 
 RUN apk --no-cache add --virtual build-dependencies git \
-      && go get -u github.com/mitchellh/gox \
-      && rm -rf /go/pkg /go/src \
-      && go get -u -v github.com/ahmetalpbalkan/govvv
+      && go get -u -v github.com/mitchellh/gox \
+      && go install -v github.com/mitchellh/gox \
+      && go get -u -v github.com/ahmetalpbalkan/govvv \
+      && rm -rf /go/pkg /go/src
 
 ENTRYPOINT ["/go/bin/gox"]
 CMD ["-h"]
