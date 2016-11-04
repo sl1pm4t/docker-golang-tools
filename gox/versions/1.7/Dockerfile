@@ -6,11 +6,5 @@ FROM golang:1.7-alpine
 
 RUN apk --no-cache add --virtual build-dependencies git \
       && go get -u -v github.com/mitchellh/gox \
-      && go get -u -v github.com/ahmetalpbalkan/govvv \
-      && rm -rf /go/pkg /go/src
+      && go get -u -v github.com/ahmetalpbalkan/govvv
 
-ENV GOPATH /go
-ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
-
-RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
-WORKDIR $GOPATH
